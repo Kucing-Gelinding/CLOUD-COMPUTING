@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cunny Content API for Learning Materials">
+    <title>Cunny Contents API Docs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="https://cdn.dribbble.com/users/603800/screenshots/4569474/dribbble-code.gif" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        roboto: ['Roboto', 'sans-serif'],
+                        funnel: ['Funnel Sans', 'sans-serif'],
+                    },
+                },
+            },
+        };
+    </script>
+    <style>
+        /* Animation for logo */
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateX(-10px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+
+        .logo-animate {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes colorChange {
+            0% { color: red; }
+            50% { color: green; }
+            100% { color: red; }
+        }
+
+        .color-change {
+            animation: colorChange 4s infinite;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100 flex flex-col min-h-screen font-roboto">
+
+    <!-- Drawer for Mobile -->
+    <div id="drawer" class="fixed inset-y-0 left-0 w-64 bg-gray-800 bg-opacity-60 backdrop-blur-lg text-white transform -translate-x-full transition-transform duration-300 z-50 sm:translate-x-0 sm:static sm:w-64 sm:fixed">
+        <div class="p-4">
+            <h2 class="text-2xl font-bold font-funnel italic">API Docs</h2>
+        </div>
+        <nav class="mt-4">
+            <ul>
+                <li class="mb-2">
+                    <a href="#get-all" class="block px-4 py-2 hover:bg-gray-700 hover:underline hover:text-blue-400 hover:italic" onclick="closeDrawerOnMenuClick()">Get All Learning Materials</a>
+                </li>
+                <li>
+                    <a href="#get-by-id" class="block px-4 py-2 hover:bg-gray-700 hover:underline hover:text-blue-400 hover:italic" onclick="closeDrawerOnMenuClick()">Get Learning Material by ID</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Main Container -->
+    <div class="flex-grow sm:ml-64">
+        <!-- Header -->
+        <header class="fixed top-0 left-0 right-0 bg-gray-800 bg-opacity-60 backdrop-blur-lg text-white shadow px-4 sm:px-8 py-4 z-10 flex items-center justify-between sm:justify-start sm:ml-64">
+            <!-- Mobile Menu Button -->
+            <button 
+                class="block sm:hidden p-2 rounded text-blue-400 hover:bg-gray-700 focus:outline-none focus:ring focus:ring-blue-500"
+                onclick="toggleDrawer()">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+
+            <div class="ml-4 sm:ml-0 flex items-center">
+                <!-- Logo with Animation -->
+                <img src="https://cdn.dribbble.com/users/603800/screenshots/4569474/dribbble-code.gif" alt="Logo" class="w-10 h-10 logo-animate mr-4" />
+                <div class="flex flex-col">
+                    <!-- <h1 class="text-2xl sm:text-4xl font-bold text-red-400 font-funnel">Cunny Contents API</h1> -->
+                    <h1 class="text-2xl sm:text-4xl font-bold font-funnel color-change">
+                        Cunny Contents API
+                    </h1>
+                    <!-- New Paragraph Below the Logo and Heading -->
+                    <p class="text-gray-400 text-sm sm:text-lg font-roboto italic">
+                        Cunny Learning Materials API
+                    </p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Content -->
+        <main class="mt-16 sm:mt-24 p-4 sm:p-8">
+            <!-- API 1: Get All Learning Materials -->
+            <section id="get-all" class="mb-8">
+                <h2 class="text-2xl font-semibold text-blue-400 font-funnel">1. Get All Learning Materials</h2>
+                <p class="text-gray-300 mb-4 font-roboto">
+                    This API endpoint retrieves all learning materials from the database.
+                </p>
+                
+                <div class="bg-gray-800 bg-opacity-60 backdrop-blur-lg p-6 rounded shadow">
+                    <h3 class="text-xl font-semibold text-gray-100 font-roboto">Request</h3>
+                    <p class="text-gray-400"><span class="text-blue-400 text-lg font-bold">GET</span> /api/learning-materials</p>
+
+                    <h3 class="text-xl font-semibold text-gray-100 mt-4 font-roboto">Response</h3>
+                    <pre class="bg-gray-900 p-4 rounded overflow-x-auto text-gray-200 font-roboto">
+{
+    "message": "Learning materials retrieved successfully.",
+    "data": [
+        {
+            "id": 1,
+            "title": "Introduction to Node.js",
+            "name": "Node.js Basics",
+            "learning_image_path": "https://storage.googleapis.com/my-bucket-name/images/nodejs-intro.jpg",
+            "body": "This is the body of the learning material.",
+            "created_at": "2024-01-01T00:00:00Z",
+            "updated_at": "2024-01-01T00:00:00Z"
+        }
+    ]
+}
+                    </pre>
+                </div>
+            </section>
+
+            <!-- API 2: Get Learning Material by ID -->
+            <section id="get-by-id" class="mb-8">
+                <h2 class="text-2xl font-semibold text-blue-400 font-funnel">2. Get Learning Material by ID</h2>
+                <p class="text-gray-300 mb-4 font-roboto">
+                    This API endpoint retrieves a learning material by its unique ID.
+                </p>
+                
+                <div class="bg-gray-800 bg-opacity-60 backdrop-blur-lg p-6 rounded shadow">
+                    <h3 class="text-xl font-semibold text-gray-100 font-roboto">Request</h3>
+                    <p class="text-gray-400"><span class="text-blue-400 text-lg font-bold">GET</span> /api/learning-materials/{id}</p>
+                    <p class="text-gray-400">Replace <code>{id}</code> with the ID of the learning material you want to retrieve.</p>
+
+                    <h3 class="text-xl font-semibold text-gray-100 mt-4 font-roboto">Response</h3>
+                    <pre class="bg-gray-900 p-4 rounded overflow-x-auto text-gray-200 font-roboto">
+{
+    "message": "Learning material retrieved successfully.",
+    "data": {
+        "id": 1,
+        "title": "Introduction to Node.js",
+        "name": "Node.js Basics",
+        "learning_image_path": "https://storage.googleapis.com/my-bucket-name/images/nodejs-intro.jpg",
+        "body": "This is the body of the learning material.",
+        "created_at": "2024-01-01T00:00:00Z",
+        "updated_at": "2024-01-01T00:00:00Z"
+    }
+}
+                    </pre>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="fixed bottom-0 left-0 right-0 bg-gray-800 bg-opacity-60 backdrop-blur-lg text-gray-400 text-center py-4 font-roboto">
+        Copyright 2024 &copy; Cunny. All Rights Reserved.
+    </footer>
+
+    <script>
+        // Function to toggle the drawer
+        function toggleDrawer() {
+            const drawer = document.getElementById('drawer');
+            drawer.classList.toggle('-translate-x-full');
+        }
+
+        // Function to close the drawer when a menu item is clicked
+        function closeDrawerOnMenuClick() {
+            const drawer = document.getElementById('drawer');
+            drawer.classList.add('-translate-x-full');
+        }
+    </script>
+</body>
+</html>

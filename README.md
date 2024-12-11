@@ -113,7 +113,7 @@ To avoid incurring charges, clean up the deployed resources:
 
 1. Delete the Cloud Run service:
    ```bash
-   gcloud run services delete fruits-model-api --region asia-southeast2
+   gcloud run services delete fruits-model-api --region asia-southeast2 .
    ```
 
 2. Delete the Docker image from Artifact Registry:

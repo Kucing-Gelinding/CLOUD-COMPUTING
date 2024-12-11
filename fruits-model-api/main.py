@@ -17,9 +17,9 @@ CLASS_NAMES = ["apple", "banana", "paprika", "orange", "tomato"]
 
 # Cloud storage URLs for related images
 CLOUD_STORAGE_URLS = {
-    0: "https://storage.googleapis.com/cunny-assets-bucket/prediction_result_images/red-apple.jpg",  # Paper
-    1: "https://storage.googleapis.com/cunny-assets-bucket/prediction_result_images/yellow-banana.jpg",   # Rock
-    2: "https://storage.googleapis.com/cunny-assets-bucket/prediction_result_images/green-paprika.jpg", # Scissors
+    0: "https://storage.googleapis.com/cunny-assets-bucket/prediction_result_images/red-apple.jpg",  
+    1: "https://storage.googleapis.com/cunny-assets-bucket/prediction_result_images/yellow-banana.jpg",   
+    2: "https://storage.googleapis.com/cunny-assets-bucket/prediction_result_images/green-paprika.jpg", 
     3: "https://storage.googleapis.com/cunny-assets-bucket/prediction_result_images/orange.jpg",
     4: "https://storage.googleapis.com/cunny-assets-bucket/prediction_result_images/tomato.jpg",
 }
